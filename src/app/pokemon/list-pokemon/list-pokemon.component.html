@@ -14,4 +14,10 @@
       <span *ngFor="let type of pokemon.types" class="{{type | pokemonTypeColor}} flex justify-center mt-2">{{type}}</span>
     </div>
   </article>
+  
 </main>
+<div class="w-2/3 flex justify-end mx-auto mb-8">
+  <button class="border px-4 py-2 bg-red-500 rounded-full text-white" routerLink="/pokemon/add">+</button>
+</div>
+
+

@@ -27,8 +27,13 @@
        
         <p class="bg-gray-100 p-1 rounded">{{ pokemon.created  | date:"dd/MM/yy"}}</p>
       </div>
-      <a (click)="goToPokemonList()" class="mt-5 text-yellow-500 font-bold cursor-pointer">Retour</a>
-      <a (click)="goToEditPokemon(pokemon)" class="mt-5 text-yellow-500 font-bold cursor-pointer">Editer</a>
+      <div class="flex justify-evenly">
+        <a (click)="goToPokemonList()" class="mt-5 text-yellow-500 font-bold cursor-pointer">Retour</a>
+        <a (click)="goToEditPokemon(pokemon)" class="mt-5 text-yellow-500 font-bold cursor-pointer">Editer</a>
+        <a (click)="deletePokemon(pokemon)" class="mt-5 text-yellow-500 font-bold cursor-pointer">Supprimer</a>
+      </div>
+     
+
     </div>
   </div>
   
