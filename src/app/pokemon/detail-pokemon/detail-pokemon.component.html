@@ -1,0 +1,36 @@
+<main
+  *ngIf="pokemon"
+  class="flex flex-col justify-start items-center h-screen mt-16"
+>
+  <h2 class="text-center text-4xl mb-8">{{ pokemon.name }}</h2>
+
+  <div
+    class="flex flex-col lg:flex-row w-11/12 lg:w-2/3  p-4 justify-center items-center border rounded-lg"
+  >
+    <img [src]="pokemon.picture" alt="" class="w-40"/>
+    <div class="w-full grid grid-cols-2">
+      <div class="sm:space-y-2  grid grid-rows-5">
+        <p class="bg-gray-100 p-1 rounded">Nom</p>
+        <p>Points de vie</p>
+        <p class="bg-gray-100 p-1 rounded">Dégâts</p>
+        <p>Types</p>
+        <p class="bg-gray-100 p-1 rounded">Date de création</p>
+        
+      </div>
+      <div class="sm:space-y-2 grid grid-rows-5 ">
+        <p class="bg-gray-100 p-1 rounded">{{ pokemon.name }}</p>
+        <p>{{ pokemon.hp }}</p>
+        <p class="bg-gray-100 p-1 rounded">{{ pokemon.cp }}</p>
+        <div class="flex gap-2">
+          <span *ngFor="let type of pokemon.types" class="{{type | pokemonTypeColor}} flex justify-center">{{type}}</span>
+        </div>
+       
+        <p class="bg-gray-100 p-1 rounded">{{ pokemon.created  | date:"dd/MM/yy"}}</p>
+      </div>
+      <a (click)="goToPokemonList()" class="mt-5 text-yellow-500 font-bold cursor-pointer">Retour</a>
+      <a (click)="goToEditPokemon(pokemon)" class="mt-5 text-yellow-500 font-bold cursor-pointer">Editer</a>
+    </div>
+  </div>
+  
+</main>
+<h4 *ngIf="!pokemon" class="text-center text-purple-500 mt-8 text-4xl">Aucun pokémon à afficher !</h4>
