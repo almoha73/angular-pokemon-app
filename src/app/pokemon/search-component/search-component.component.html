@@ -1,0 +1,24 @@
+<div class="flex w-full justify-center mt-8">
+  <div
+    class="border w-1/2 h-auto flex flex-col justify-center items-center p-4"
+  >
+    <input
+      #searchBox
+      (keyup)="search(searchBox.value)"
+      placeholder="Rechercher un pokémon"
+      aria-label="search"
+      class="border w-2/3 outline-none focus:border-green-500 rounded-lg p-1"
+    />
+    <ul class="w-2/3 h-auto flex flex-col block">
+      <a
+        *ngFor="let pokemon of pokemons$ | async"
+        (click)="goToDetail(pokemon)"
+        class="w-full block border mt-4 cursor-pointer"
+      >
+        <li class="w-full ml-4 ">{{ pokemon.name }}</li>
+      </a>
+    </ul>
+  </div>
+</div>
+<!-- $ convention que pokemons est un observable -->
+<!--pipe async évite de faire un subsribe-->
