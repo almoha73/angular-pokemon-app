@@ -12,12 +12,15 @@ import { EditPokemonComponent } from "./edit-pokemon/edit-pokemon.component";
 import { AddPokemonComponent } from './add-pokemon/add-pokemon.component';
 import { SearchComponentComponent } from './search-component/search-component.component';
 import { LoaderComponent } from './loader/loader.component';
+import { AuthGuard } from "../auth.guard";
+
+
 
 const pokemonRoutes: Routes = [
-  { path: "edit/pokemon/:id", component: EditPokemonComponent }, // route spécifique en premier
-  { path: "pokemon/add", component: AddPokemonComponent }, 
-  { path: "pokemons", component: ListPokemonComponent },
-  { path: "pokemon/:id", component: DetailPokemonComponent },
+  { path: "edit/pokemon/:id", component: EditPokemonComponent, canActivate: [AuthGuard] }, // route spécifique en premier
+  { path: "pokemon/add", component: AddPokemonComponent, canActivate: [AuthGuard] }, 
+  { path: "pokemons", component: ListPokemonComponent, canActivate: [AuthGuard] },
+  { path: "pokemon/:id", component: DetailPokemonComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
@@ -31,6 +34,7 @@ const pokemonRoutes: Routes = [
     AddPokemonComponent,
     SearchComponentComponent,
     LoaderComponent,
+    
   ],
   imports: [CommonModule, FormsModule, RouterModule.forChild(pokemonRoutes)],
   providers: [PokemonService],
